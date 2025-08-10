@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kapsalon Mela | Kapper Dronten | Openingstijden & Afspraak</title>
+  <meta name="description" content="Kapsalon Mela in Dronten. Bekijk onze openingstijden, diensten en maak direct een afspraak. Betaalbare kwaliteit voor iedereen!" />
+  <meta name="keywords" content="kapper, kapsalon, Dronten, haar, beauty, openingstijden, afspraak, knippen, kleuren, heren, dames, kinderen" />
+  <meta name="author" content="Kapsalon Mela" />
+  <meta property="og:title" content="Kapsalon Mela | Kapper Dronten" />
+  <meta property="og:description" content="Betaalbare kwaliteit, professionele kappers en beauty experts in Dronten. Bekijk openingstijden en maak direct een afspraak!" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://kapsalonmela.nl/" />
+  <meta property="og:image" content="https://kapsalonmela.nl/src/Mela%20logo.png" />
+  <meta name="robots" content="index, follow" />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&family=Tinos:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      background-color: black;
+      color: white;
+      font-family: 'Nunito', sans-serif;
+      text-align: center;
+    }
+    h1, h2, h3 {
+      font-family: 'Tinos', serif;
+      color: gold;
+      font-size: 40px;
+      margin-top: 0;
+    }
+    .section {
+      padding: 40px 20px;
+      border-bottom: 1px solid rgba(255,215,0,0.2);
+    }
+    .section p {
+      font-size: 1.5rem;
+      line-height: 1.6;
+      color: #ccc;
+    }
+    .hero {
+      min-height: 60vh; /* vh مخفف Viewport Height است screen percentage*/ 
+      padding-top: 10px;
+      background: url('src/salon_dimmer_60_blueish_cream.jpg') center/cover no-repeat;
+      background-attachment: fixed; /* for paralax effect */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      
+    }
+    .hero h1 {  /* in hero > tag p */
+      font-size: 3rem;
+      font-family: Georgia;
+      font-weight: bold;
+    }
+
+    .about-content {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 50px;
+      padding: 0 30px;
+    }
+
+    .about-content img {
+      display: block;
+      width: 300px;
+      height: auto;
+      border-radius: 8px;
+      margin: auto auto;
+    }
+    .about-content p {
+      font-size: 1.5rem;
+      line-height: 1.6;
+      color: #ccc;
+      text-align: left;
+    }
+
+    .barberies {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 20px;
+      margin-bottom: 30px;
+    }
+    .barberies img {
+      width: 48px;
+      height: 55px;
+      object-fit: cover;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 50px;
+      padding: 0 30px 0 30px;
+    }
+    .gallery img {
+      display: block; /* باعث می‌شود تصویر به صورت بلاک نمایش داده شود و بتواند margin بگیرد */
+      margin: 0 auto; /* فاصله چپ و راست را خودکار می‌کند تا تصویر دقیقاً وسط ستون قرار بگیرد */
+      width: auto;
+      height: 250px; /* ارتفاع ثابت */
+      border-radius: 8px;
+    }
+    .logo {
+      width: 250px;   /* عرض دلخواه */
+      height: auto;   /* نسبت تصویر حفظ شود */
+      display: block;
+      margin: 0 auto 10px auto; /* وسط‌چین و کمی فاصله پایین */
+    }
+
+    .contact-row {
+      display: grid;
+      grid-template-columns: repeat(3, 2fr);
+      gap: 20px;
+      justify-items: center;
+      align-items: center;
+     
+    }
+
+    .contact-row img {
+      display: flex;
+      justify-content: center;
+      width: 100px;
+      gap: 20px;
+    }
+
+    /* Carousel styles */
+    .custom-carousel {
+      position: relative;
+      overflow: hidden;
+      max-width: 100%;
+      margin: 0 auto;
+      border-top: 3px solid gold;
+      border-bottom: 3px solid gold;
+    }
+
+    .carousel-track {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .carousel-track img {
+      width: 25%;
+      height: auto;
+    }
+
+    .custom-carousel {
+      margin-top: 100px;
+    }
+
+    /* Opening hours styles */
+    .opening-hours-list {
+      list-style: none;
+      padding: 0;
+      max-width: 400px;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    .opening-hours-list li {
+      display: flex;
+      justify-content: space-between;
+      padding: 4px 0;
+      font-size: 1.4rem;
+    }
+
+    /* Services grid styles */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 20px;
+      padding: 0 30px;
+    }
+
+    .service-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+    }
+
+    .service-item img {
+      width: 248px;
+      height: 248px;
+      display: block;
+    }
+
+    .price-tag {
+            /* 
+        position: static;
+        حالت پیش‌فرض position در CSS است.
+        یعنی عنصر در جریان عادی صفحه قرار می‌گیرد و هیچ تغییری در موقعیت آن ایجاد نمی‌شود.
+        این مقدار باعث می‌شود price-tag زیر عکس قرار بگیرد و با margin-top فاصله بگیرد.
+      */
+      position: static;
+      display: block;
+      background-color: rgba(0, 0, 0, 0.7);
+      color: gold;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: 1.2rem;
+      margin-top: 10px;
+    }
+
+    .section a {
+      color: #ffe066;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.2s, background 0.2s;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+    .section a:hover,
+    .section a:focus {
+      color: #222;
+      background: #ffe066;
+    }
+    .phone-link {
+      color: #ffe066;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.2s, background 0.2s;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+    .phone-link:hover,
+    .phone-link:focus {
+      color: #222;
+      background: #ffe066;
+    }
+
+    /* 
+      Responsive styles for mobile (max-width: 768px)
+      این بخش باعث می‌شود سایت در موبایل و تبلت به صورت ستونی و جمع‌وجور نمایش داده شود.
+    */
+    @media (max-width: 768px) {
+      /* 
+        همه بخش‌های گرید (درباره ما، گالری، خدمات، تماس) به یک ستون تبدیل می‌شوند.
+        یعنی هر آیتم زیر هم قرار می‌گیرد.
+      */
+      .about-content,
+      .gallery,
+      .services-grid,
+      .contact-row {
+        grid-template-columns: 1fr !important; /* فقط یک ستون */
+        gap: 20px; /* فاصله بین آیتم‌ها کمتر می‌شود */
+        padding: 0 10px; /* حاشیه کناری کمتر برای موبایل */
+      }
+
+      /* 
+        لوگو کوچکتر می‌شود تا در موبایل بهتر جا بگیرد.
+      */
+      .logo {
+        width: 150px;
+      }
+
+      /* 
+        عکس‌های خدمات، گالری و درباره ما عرض کامل ستون را می‌گیرند و حداکثر ۳۰۰ پیکسل می‌شوند.
+        margin: 0 auto باعث می‌شود وسط‌چین بمانند.
+      */
+      .service-item img,
+      .gallery img,
+      .about-content img {
+        width: 100%;
+        max-width: 300px;
+        height: auto;
+        margin: 0 auto;
+      }
+
+      /* 
+        تیترها کوچکتر می‌شوند تا در موبایل مناسب باشند.
+      */
+      h1, h2, h3 {
+        font-size: 2rem;
+      }
+
+      /* 
+        فاصله داخلی هر سکشن کمتر می‌شود تا صفحه جمع‌وجورتر باشد.
+      */
+      .section {
+        padding: 20px 5px;
+      }
+
+      /* 
+        آیکون‌های تماس کوچکتر می‌شوند.
+      */
+      .contact-row img {
+        width: 60px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sectie 1: Hero -->
+  <!--
+این بخش همزمان دو کلاس section و hero دارد.
+پس می‌توانی هم با .section و هم با .hero در CSS آن را انتخاب و استایل‌دهی کنی.
+-->
+<section class="section hero">
+  <img src="src/Mela logo.png" alt="Kapsalon Mela Logo" class="logo" />
+  <h1>Snel, Vakmanschap, Voordeel.</h1>
+</section>
+
+<!-- Sectie 2: Over Ons -->
+<section class="section">
+  <h2>Over Ons</h2>
+  <div class="about-content">
+    <img src="src/about us.png" alt="Over Ons" />
+    <p>KWALITEIT HOEFT NIET DUUR TE ZIJN. <br>JIJ KNAP, JE PORTEMONNEE BLIJ.</p>
+  </div>
+</section>
+
+<!-- Sectie 3: Producten -->
+<section class="section">
+  <h2>Producten</h2>
+    <!-- Carousel Container -->
+  <div class="custom-carousel">
+    <div class="carousel-track">
+      <img src="src/kiss00001.jpeg" alt="1">
+      <img src="src/kiss00002.jpeg" alt="2">
+      <img src="src/kiss00003.jpeg" alt="3">
+      <img src="src/kiss00004.jpeg" alt="4">
+      <img src="src/kiss00005.jpeg" alt="5">
+      <img src="src/kiss00006.jpeg" alt="6">
+      <img src="src/kiss00007.jpeg" alt="7">
+      <img src="src/kiss00008.jpeg" alt="8">
+    </div>
+  </div>
+</section>
+
+<!-- Sectie 4: Onze Diensten -->
+<section class="section">
+  <h2>Onze Diensten</h2>
+  <div class="services-grid">
+    <div class="service-item">
+      <img src="src/medium-length-hairstyles-for-Men-17.jpg" alt="Heren">
+      <div class="price-tag">HEREN </br>€16,50</div>
+    </div>
+    <div class="service-item">
+      <img src="src/REDKEN-brunette-lob.webp" alt="Dames">
+      <div class="price-tag">DAMES </br>€18,50</div>
+    </div>
+    <div class="service-item">
+      <img src="src/wenkbrauwen.jpeg" alt="Wenkbrauwen Epileren">
+      <div class="price-tag">WENKBRAUWEN EPILEREN</br>€10</div>
+    </div>
+    <div class="service-item">
+      <img src="src/senioren.jpg" alt="Senioren">
+      <div class="price-tag">SENIOREN</br>€13,50</div>
+    </div>
+    <div class="service-item">
+      <img src="src/kinder.jpg" alt="Kinderen">
+      <div class="price-tag">KINDEREN</br>€13,50</div>
+    </div>
+    <div class="service-item">
+      <img src="src/farben.jpeg" alt="Verven">
+      <div class="price-tag">VERVEN VANAF</br>€40</div>
+    </div>
+  </div>
+</section>
+
+<!-- Sectie 5: Galerij -->
+<section class="section">
+  <h2>Galerij</h2>
+  <div class="gallery">
+    <img src="src/salon_dimmer_60_blueish_cream.jpg" alt="Stijl 1">
+    <img src="src/salon2.jpg" alt="Stijl 2">
+  </div>
+</section>
+
+<!-- Sectie 6: Onze Team -->
+<section class="section">
+  <h2>Onze Team</h2>
+  <p>Professionele kappers , beauty experts toegewijd aan jouw tevredenheid.</p>
+</section>
+
+<!-- Sectie 7: Openingstijden -->
+<section class="section">
+  <h2>Openingstijden</h2>
+  <ul class="opening-hours-list">
+    <li><span>Maandag</span><span>13:00 - 18:00</span></li>
+    <li><span>Dinsdag</span><span>09:30 - 18:00</span></li>
+    <li><span>Woensdag</span><span>09:30 - 18:00</span></li>
+    <li><span>Donderdag</span><span>09:30 - 18:00</span></li>
+    <li><span>Vrijdag</span><span>09:30 - 20:00</span></li>
+    <li><span>Zaterdag</span><span>09:30 - 18:00</span></li>
+    <li><span>Zondag</span><span>Gesloten</span></li>
+  </ul>
+</section>
+
+<!-- Sectie 8: Contact -->
+<section class="section">
+  <h2>Contact</h2>
+  <div class="contact-row">
+    <img src="src/location .png" alt="Locatie Icoon" class="logo" />
+    <img src="src/Tel.png" alt="Telefoon Icoon" class="logo" />
+    <img src="src/email.png" alt="E-mail Icoon" class="logo" />
+    <a href="https://maps.app.goo.gl/K6V6JSUDM4cH2Bds9?g_st=ipc">De kajuit 6</br>8254 KX te Dronten</a>
+    <a href="tel:+31610204422" class="phone-link">Tel: </br> +31 6 10204422</a>
+    <a href="mailto:info@kapsalonmela.nl">E-mail: </br>info@kapsalonmela.nl</a>
+  </div>
+</section>
+
+  <footer class="section">
+    <p>&copy; 2025 Kapsalon Mela</p>
+  </footer>
+
+  <script>
+let currentIndex = 0;
+const totalImages = 8;
+const imagesPerSlide = 4;
+const track = document.querySelector('.carousel-track');
+
+function showSlide(index) {
+  track.style.transform = `translateX(-${index * 25}%)`;
+}
+
+setInterval(() => {
+  currentIndex++;
+  if (currentIndex > totalImages - imagesPerSlide) {
+    currentIndex = 0;
+  }
+  showSlide(currentIndex);
+}, 3000);
+
+window.addEventListener('resize', () => showSlide(currentIndex));
+showSlide(0);
+</script>
+
+</body>
+</html>
