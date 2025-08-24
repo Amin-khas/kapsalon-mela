@@ -89,17 +89,25 @@
       object-fit: cover;
     }
     .gallery {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 50px;
-      padding: 0 30px 0 30px;
+  display: grid;
+  gap: 20px;
+  justify-items: center;
+  align-items: stretch;
+  padding: 0 10px 0 10px;
     }
     .gallery img {
-      display: block; /* باعث می‌شود تصویر به صورت بلاک نمایش داده شود و بتواند margin بگیرد */
-      margin: 0 auto; /* فاصله چپ و راست را خودکار می‌کند تا تصویر دقیقاً وسط ستون قرار بگیرد */
-      width: auto;
-      height: 250px; /* ارتفاع ثابت */
+      display: block;
+      width: 100%;
+      height: 100%;
       border-radius: 8px;
+      object-fit: cover;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      transition: transform 0.2s;
+    }
+
+  .gallery img:hover {
+    transform: scale(1.05);
+    z-index: 2;
     }
     .logo {
       width: 250px;   /* عرض دلخواه */
@@ -214,6 +222,14 @@
       color: #222;
       background: #ffe066;
     }
+    .team-members img {
+      width: 300px;
+      height: auto;
+      border-radius: 8px;
+      margin-top: 20px;
+    }
+
+
     .phone-link {
       color: #ffe066;
       text-decoration: none;
@@ -238,12 +254,23 @@
         یعنی هر آیتم زیر هم قرار می‌گیرد.
       */
       .about-content,
-      .gallery,
       .services-grid,
       .contact-row {
-        grid-template-columns: 1fr !important; /* فقط یک ستون */
-        gap: 20px; /* فاصله بین آیتم‌ها کمتر می‌شود */
-        padding: 0 10px; /* حاشیه کناری کمتر برای موبایل */
+        grid-template-columns: 1fr !important;
+        gap: 20px;
+        padding: 0 10px;
+      }
+      .gallery {
+        grid-template-columns: 1fr !important;
+        gap: 10px;
+        padding: 0 5px;
+        justify-items: center;
+      }
+      .gallery img {
+        width: 100% !important;
+        max-width: 300px;
+        height: auto !important;
+        margin: 0 auto;
       }
 
       /* 
@@ -377,15 +404,37 @@ Ons team van ervaren dames- en herenkappers heeft jarenlange expertise in het va
 <section class="section">
   <h2>Galerij</h2>
   <div class="gallery">
-    <img src="src/salon_dimmer_60_blueish_cream.jpg" alt="Stijl 1">
-    <img src="src/salon2.jpg" alt="Stijl 2">
+  <!-- Carousel for gallery images -->
+  <div class="custom-carousel">
+    <div class="carousel-track">
+      <img src="src/gallery/meysam scissors4.jpeg" alt="Meysam Cutting Hair 4">
+           <img src="src/gallery/meysam scissors 3.jpeg" alt="Meysam Cutting Hair 3">
+      <img src="src/gallery/shelf.jpeg" alt="Product Shelf">
+      <img src="src/gallery/a man sit alone.jpeg" alt="Man Sitting Alone 1">
+      <img src="src/gallery/blond back.jpeg" alt="Blond Hair Back">
+      <img src="src/gallery/everybody.jpeg" alt="Salon Group Photo">
+      <img src="src/gallery/strippenkaart.jpeg" alt="Strippenkaart Card">
+      <img src="src/gallery/white blond.jpeg" alt="White Blond Hairstyle">
+      <img src="src/gallery/a man sit alone 2.jpeg" alt="Man Sitting Alone 2">
+      <img src="src/gallery/a man sit alone 3.jpeg" alt="Man Sitting Alone 3">
+      <img src="src/gallery/meysam scissors 2.jpeg" alt="Meysam Cutting Hair 2">
+      <img src="src/gallery/meysam scissors.jpeg" alt="Meysam Cutting Hair 1">
+      <img src="src/gallery/black cutie.jpeg" alt="Black Hair Style">
+      <img src="src/gallery/old lady boy.jpeg" alt="Old Lady Boy Hairstyle">
+    </div>
   </div>
+
 </section>
 
 <!-- Sectie 6: Onze Team -->
 <section class="section">
   <h2>Onze Team</h2>
-  <p>Professionele kappers , beauty experts toegewijd aan jouw tevredenheid.</p>
+  <div class="team-members">
+    <p>Professionele kappers , beauty experts toegewijd aan jouw tevredenheid.</p>
+    <img src="src/meysam self.jpeg" alt="Stijl 1">
+    <img src="src/meysam 2.jpeg" alt="Stijl 1">
+    <img src="src/vitirin.jpeg" alt="Stijl 1">
+  </div>
 </section>
 
 <!-- Sectie 7: Openingstijden -->
@@ -397,7 +446,7 @@ Ons team van ervaren dames- en herenkappers heeft jarenlange expertise in het va
     <li><span>Woensdag</span><span>09:30 - 18:00</span></li>
     <li><span>Donderdag</span><span>09:30 - 18:00</span></li>
     <li><span>Vrijdag</span><span>09:30 - 20:00</span></li>
-    <li><span>Zaterdag</span><span>09:30 - 18:00</span></li>
+    <li><span>Zaterdag</span><span>09:30 - 17:00</span></li>
     <li><span>Zondag</span><span>Gesloten</span></li>
   </ul>
 </section>
@@ -422,25 +471,51 @@ Ons team van ervaren dames- en herenkappers heeft jarenlange expertise in het va
 
   <script src="main.js?v=2"></script>
   <script>
-let currentIndex = 0;
-const totalImages = 8;
-const imagesPerSlide = 4;
-const track = document.querySelector('.carousel-track');
+// Animation for first carousel (Producten)
+let currentIndex1 = 0;
+const totalImages1 = 8;
+const imagesPerSlide1 = 4;
+const track1 = document.querySelectorAll('.carousel-track')[0];
 
-function showSlide(index) {
-  track.style.transform = `translateX(-${index * 25}%)`;
+function showSlide1(index) {
+  track1.style.transform = `translateX(-${index * 25}%)`;
 }
 
 setInterval(() => {
-  currentIndex++;
-  if (currentIndex > totalImages - imagesPerSlide) {
-    currentIndex = 0;
+  currentIndex1++;
+  if (currentIndex1 > totalImages1 - imagesPerSlide1) {
+    currentIndex1 = 0;
   }
-  showSlide(currentIndex);
+  showSlide1(currentIndex1);
 }, 3000);
 
-window.addEventListener('resize', () => showSlide(currentIndex));
-showSlide(0);
+window.addEventListener('resize', () => showSlide1(currentIndex1));
+showSlide1(0);
+
+// Animation for gallery carousel
+let currentIndex2 = 0;
+const galleryTrack = document.querySelectorAll('.carousel-track')[1];
+const galleryImages = galleryTrack ? galleryTrack.children.length : 0;
+const galleryImagesPerSlide = 4;
+
+function showGallerySlide(index) {
+  if (galleryTrack) {
+    galleryTrack.style.transform = `translateX(-${index * 25}%)`;
+  }
+}
+
+if (galleryTrack) {
+  setInterval(() => {
+    currentIndex2++;
+    if (currentIndex2 > galleryImages - galleryImagesPerSlide) {
+      currentIndex2 = 0;
+    }
+    showGallerySlide(currentIndex2);
+  }, 3000);
+
+  window.addEventListener('resize', () => showGallerySlide(currentIndex2));
+  showGallerySlide(0);
+}
 </script>
 
 </body>
