@@ -558,6 +558,10 @@ if (galleryTrack) {
     if (currentIndex2 > galleryImages - galleryImagesPerSlide) {
       currentIndex2 = 0;
     }
+    // Prevent showing empty space at the end
+    if (currentIndex2 * galleryImagesPerSlide > galleryImages) {
+      currentIndex2 = 0;
+    }
     showGallerySlide(currentIndex2);
   }, 3000);
 
