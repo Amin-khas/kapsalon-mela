@@ -14,7 +14,7 @@
   <meta property="og:image" content="https://kapsalonmela.nl/src/Mela%20logo.png" />
   <meta name="robots" content="index, follow" />
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&family=Tinos:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=1.2.3">
+  <link rel="stylesheet" href="style.css?v=1.2.4">
   <style>
     body {
       margin: 0;
@@ -53,6 +53,18 @@
       font-size: 3rem;
       font-family: Georgia;
       font-weight: bold;
+    }
+
+    .zonder {
+      justify-content: center;
+    }
+
+    .zonder img {
+      width: 400px;
+      height: auto;
+      border-radius: 8px;
+      margin-top: -90px;
+      padding-top: 0%;
     }
 
     .about-content {
@@ -257,6 +269,20 @@
       این بخش باعث می‌شود سایت در موبایل و تبلت به صورت ستونی و جمع‌وجور نمایش داده شود.
     */
     @media (max-width: 768px) {
+      .zonder {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 10px 0;
+      }
+      .zonder img {
+        width: 90vw !important;
+        max-width: 350px !important;
+        height: auto !important;
+        margin-top: 0 !important;
+        border-radius: 10px !important;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+      }
       .team-members p {
         font-size: 1.1rem;
         line-height: 1.7;
@@ -370,6 +396,10 @@
   <img src="src/Mela logo.png" alt="Kapsalon Mela Logo" class="logo" />
   <h1>Snel, Vakmanschap, Voordeel.</h1>
 </section>
+
+<div class ="zonder">
+<img src="src/zonder.png" alt="Stijl 1" height="400">
+</div>
 
 <!-- Sectie 2: MELAs verhaal -->
 <section class="section">
